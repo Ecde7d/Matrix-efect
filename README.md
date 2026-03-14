@@ -12,4 +12,4 @@ The Matrix efect
 ## How to use
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Ecde/ecde_mtrx.git
+   git clone https://github.com/Ecde7d/ecde_mtrx.git
