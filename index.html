@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Matrix</title>
+<style>
+body{
+    margin:0;
+    background:black;
+}
+canvas{
+    display:block;
+}
+</style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = 'アカサタナハマヤラワABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const rows = Array(Math.floor(columns)).fill(1);
+
+function matrix(){
+    requestAnimationFrame(matrix);
+
+    ctx.fillStyle = 'rgba(0,0,0,0.05)';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle = '#0f0';
+    ctx.font = `${fontSize}px monospace`;
+
+    rows.forEach((y,i)=>{
+        const text = letters[Math.floor(Math.random()*letters.length)];
+        const x = i * fontSize;
+
+        ctx.fillText(text,x,y * fontSize);
+
+        if(y * fontSize > canvas.height && Math.random() > 0.975){
+            rows[i] = 0;
+        }
+
+        rows[i]++;
+    });
+}
+
+matrix();
+</script>
+
+</body>
+</html>
